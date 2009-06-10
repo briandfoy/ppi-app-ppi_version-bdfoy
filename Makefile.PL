@@ -10,12 +10,14 @@ WriteMakefile(
 	'VERSION_FROM' => 'lib/BDFOY.pm',
 	'LICENSE'      => 'perl',
 	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',
-	
+
 	'PREREQ_PM'    => { 
-		'Test::More'       => '0',
-		'PPI'              => '0',
-		'File::Find::Rule' => '0',
-		'version'          => '0',
+		'Test::More'             => '0',
+		'PPI'                    => '0',
+		'File::Find::Rule'       => '0',
+		'version'                => '0',
+		'PPI::App::ppi_version'  => '0',
+		'File::Find::Rule::Perl' => '0',
 		},
 
 	'PM'           => {
@@ -39,7 +41,7 @@ WriteMakefile(
 	 ),
 
 	'EXE_FILES'     => [ qw(script/ppi_version) ],
-	
+
 	'MAN3PODS'     => {
 		'lib/BDFOY.pm' => '$(INST_MAN3DIR)/PPI::App::ppi_version::BDFOY.$(MAN3EXT)',
 		},
