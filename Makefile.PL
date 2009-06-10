@@ -19,14 +19,30 @@ WriteMakefile(
 		'lib/BDFOY.pm' => '$(INST_LIBDIR)/BDFOY.pm',
 		},
 
+	(
+	$ExtUtils::MakeMaker::VERSION ge '6.48' ? 
+		(
+		MIN_PERL_VERSION => 5.008,
+
+		META_MERGE       => {
+			resources => {
+				repository => 'git://github.com/briandfoy/test-output.git',
+				},
+			keywords => ['github','git'],
+			},
+		) 
+		: 
+		()
+	 ),
+
 	'EXE_FILES'     => [ qw(script/ppi_version) ],
 	
 	'MAN3PODS'     => {
-		'lib/BDFOY.pm' => '$(INST_MAN3DIR)/PPI::App::ppi_version::BDFOY.${MAN3EXT}',
+		'lib/BDFOY.pm' => '$(INST_MAN3DIR)/PPI::App::ppi_version::BDFOY.$(MAN3EXT)',
 		},
 
 	'MAN1PODS'     => {
-		'script/ppi_version' => '$(INST_MAN1DIR)/ppi_version.${MAN3EXT}',
+		'script/ppi_version' => '$(INST_MAN1DIR)/ppi_version.$(MAN3EXT)',
 		},
 
 	clean  => { FILES    => q|PPI-App-ppi_version-BDFOY-*| },
