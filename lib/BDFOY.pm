@@ -3,6 +3,30 @@ use base qw(PPI::App::ppi_version);
 
 use PPI::App::ppi_version;
 
+=pod
+
+=head1 NAME
+
+	PPI::App::ppi_version::BDFOY - brian d foy's rip off of Adam's ppi_version
+	
+=head1 SYNOPSIS
+
+	% ppi_version
+	
+=head1 DESCRIPTION
+
+I like what PPI::App::Version does, mostly, but I had to be different.
+Life would just be easier if Adam did things my way from the start.
+
+=cut
+
+=begin private
+
+=head2 Methods
+
+=over 4
+
+=cut
 
 use 5.005;
 use strict;
@@ -21,9 +45,17 @@ BEGIN {
 #####################################################################
 # Main Methods
 
+=item print_my_version
+
+=cut
+
 sub print_my_version {
 	print "brian's ppi_version $VERSION - Copright 2006 - 2007 Adam Kennedy\n";
 	}
+
+=item print_file_report
+
+=cut
 
 sub print_file_report
 	{
@@ -46,6 +78,10 @@ sub print_file_report
 		}
 	}
 	
+=item print_info
+
+=cut
+
 sub print_info
 	{
 	my $class = shift;
@@ -53,6 +89,10 @@ sub print_info
 	print @_, "\n";
 	}
 	
+=item get_file_list
+
+=cut
+
 sub get_file_list
 	{
 	my( $class, $dir ) = @_;
@@ -64,6 +104,10 @@ sub get_file_list
 
 	return \@files;	
 	}
+
+=item show
+
+=cut
 
 sub show {
 	my $class = shift;
@@ -81,6 +125,10 @@ sub show {
 		
 	$class->print_info( "Found $count versions" );
 	}
+
+=item get_version
+
+=cut
 
 sub get_version {
 	my( $class, $file ) = @_;
@@ -133,6 +181,10 @@ sub get_version {
 	return ( $version_string, undef, undef );
 	}
 
+=item change
+
+=cut
+
 sub change {
 	my $class = shift;
 	
@@ -179,6 +231,10 @@ sub change {
 	return 0;
 }
 
+=item error
+
+=cut
+
 sub error 
 	{
 	print "\n", colored ['red'], "  $_[1]\n\n";
@@ -186,3 +242,27 @@ sub error
 	}
 
 1;
+
+=end private
+
+=head1 SOURCE AVAILABILITY
+
+This source is part of a Github project:
+
+	git@github.com:briandfoy/PPI-App-ppi_version-BDFOY.git
+
+=head1 AUTHOR
+
+Adam Kennedy wrote the original, and I stole some of the code. I even
+inherit from the original.
+
+brian d foy, C<< <bdfoy@cpan.org> >>
+
+=head1 COPYRIGHT
+
+Copyright (c) 2008-2009, brian d foy, All Rights Reserved.
+
+You may redistribute this under the same terms as Perl itself.
+
+
+=cut
