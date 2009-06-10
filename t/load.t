@@ -1,5 +1,5 @@
 BEGIN {
-	@classes = qw(PPI::App::ppiversion::BDFOY);
+	@classes = qw(PPI::App::ppi_version::BDFOY);
 	}
 
 use Test::More tests => scalar @classes;
