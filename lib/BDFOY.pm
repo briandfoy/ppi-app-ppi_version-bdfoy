@@ -4,7 +4,7 @@ use base qw(PPI::App::ppi_version);
 use PPI::App::ppi_version;
 
 
-use 5.005;
+use 5.008;
 use strict;
 use version;
 use File::Spec             ();

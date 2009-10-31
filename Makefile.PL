@@ -12,7 +12,11 @@ WriteMakefile(
 	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',
 	
 	'PREREQ_PM'    => { 
-		'Test::More' => '0',
+		'Test::More'             => '0',
+		'PPI::Document'          => '0',
+		'File::Find::Rule'       => '0',
+		'File::Find::Rule::Perl' => '0',
+		'Term::ANSIColor'        => '0',		
 		},
 
 	'PM'           => {
@@ -28,7 +32,7 @@ WriteMakefile(
 			resources => {
 				repository => 'git://github.com/briandfoy/test-output.git',
 				},
-			keywords => ['github','git'],
+			keywords => ['ppi','version'],
 			},
 		) 
 		: 
