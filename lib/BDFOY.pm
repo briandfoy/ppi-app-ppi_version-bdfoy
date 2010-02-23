@@ -269,7 +269,7 @@ sub change {
 	return 0;
 	}
 
-=item change_file
+=item changefile
 
 =cut
 
