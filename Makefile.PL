@@ -12,12 +12,14 @@ WriteMakefile(
 	'AUTHOR'       => 'brian d foy <bdfoy@cpan.org>',
 
 	'PREREQ_PM'    => { 
-		'Test::More'             => '0',
-		'PPI'                    => '0',
-		'File::Find::Rule'       => '0',
-		'version'                => '0',
-		'PPI::App::ppi_version'  => '0',
 		'File::Find::Rule::Perl' => '0',
+		'File::Find::Rule'       => '0',
+		'PPI::App::ppi_version'  => '0',
+		'PPI::Document'          => '0',
+		'PPI'                    => '0',
+		'Term::ANSIColor'        => '0',		
+		'Test::More'             => '0',
+		'version'                => '0',
 		},
 
 	'PM'           => {
@@ -33,7 +35,7 @@ WriteMakefile(
 			resources => {
 				repository => 'git@github.com:briandfoy/PPI-App-ppi_version-BDFOY.git',
 				},
-			keywords => ['github','git'],
+			keywords => ['ppi','version'],
 			},
 		) 
 		: 
