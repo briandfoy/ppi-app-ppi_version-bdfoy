@@ -22,10 +22,6 @@ WriteMakefile(
 		'version'                => '0',
 		},
 
-	'PM'           => {
-		'lib/BDFOY.pm' => '$(INST_LIBDIR)/BDFOY.pm',
-		},
-
 	'MIN_PERL_VERSION' => 5.008,
 
 	'META_MERGE' => {
