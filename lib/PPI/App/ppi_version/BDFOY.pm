@@ -176,7 +176,10 @@ sub get_version {
 		$_[1]->content =~ m/^\$(?:\w+::)*VERSION$/ or return '';
 
 		# It is the first thing in the statement
-		$_[1]->sprevious_sibling                  and return '';
+		if( my $sib = $_[1]->sprevious_sibling ) {
+			return 1 if $sib->content eq 'our';
+			return '';
+			}
 
 		# Followed by an "equals"
 		my $equals = $_[1]->snext_sibling          or return '';
