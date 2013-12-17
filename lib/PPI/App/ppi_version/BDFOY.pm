@@ -5,8 +5,8 @@ use base qw(PPI::App::ppi_version);
 
 =head1 NAME
 
-	PPI::App::ppi_version::BDFOY - brian d foy's rip off of Adam's ppi_version
-	
+PPI::App::ppi_version::BDFOY - brian d foy's rip off of Adam's ppi_version
+
 =head1 SYNOPSIS
 
 	# call it like PPI::App::ppi_version
