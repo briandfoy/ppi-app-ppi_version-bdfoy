@@ -46,8 +46,8 @@ use Term::ANSIColor;
 
 use vars qw{$VERSION};
 BEGIN {
-        $VERSION = '0.13';
-}
+	$VERSION = '0.14';
+	}
 
 #####################################################################
 # Main Methods
@@ -59,18 +59,18 @@ BEGIN {
 BEGIN {
 my %commands = map { $_, 1 } qw( show change );
 
-sub main 
+sub main
 	{
 	my( $class, @args ) = @_;
-	
+
 	my $command = do {
 		no warnings 'uninitialized';
 		if( exists $commands{ $args[0] } ) { shift @args }
 		elsif( @args == 0 )                { 'show' }
 		else                               { 'change' }
 		};
-	
-	
+
+
 	$class->$command( @args );
 	}
 }
@@ -79,7 +79,7 @@ sub main
 
 =cut
 
-sub print_my_version 
+sub print_my_version
 	{
 	print "brian's ppi_version $VERSION - Copright 2009 brian d foy\n";
 	}
@@ -92,10 +92,10 @@ sub print_file_report
 	{
 	my $class = shift;
 	my( $file, $version, $message, $error ) = @_;
-	
+
 	if( defined $version )
 		{
-		$class->print_info( 
+		$class->print_info(
 			colored( ['green'], $version ),
 			  " $file" );
 		}
@@ -108,7 +108,7 @@ sub print_file_report
 		$class->print_info( "$file... ", $message );
 		}
 	}
-	
+
 =item print_info
 
 =cut
@@ -116,10 +116,10 @@ sub print_file_report
 sub print_info
 	{
 	my $class = shift;
-	
+
 	print @_, "\n";
 	}
-	
+
 =item get_file_list
 
 =cut
@@ -127,13 +127,13 @@ sub print_info
 sub get_file_list
 	{
 	my( $class, $dir ) = @_;
-	
+
 	my @files = grep { ! /\bblib\b/ } File::Find::Rule->perl_file
 	               ->in( $dir || File::Spec->curdir );
-	
+
 	print  "Found " . scalar(@files) . " file(s)\n";
 
-	return \@files;	
+	return \@files;
 	}
 
 =item show
@@ -142,19 +142,19 @@ sub get_file_list
 
 sub show {
 	my $class = shift;
-	
+
 	my @args = @_;
-	
+
 	my $files = $class->get_file_list( $args[0] );
-	
+
 	my $count = 0;
-	foreach my $file ( @$files ) 
+	foreach my $file ( @$files )
 		{
 		my( $version, $message, $error_flag ) = $class->get_version( $file );
 		$class->print_file_report( $file, $version, $message, $error_flag );
 		$count++ if defined $version;
 		}
-		
+
 	$class->print_info( "Found $count versions" );
 	}
 
@@ -164,11 +164,11 @@ sub show {
 
 sub get_version {
 	my( $class, $file ) = @_;
-	
+
 	my $Document = PPI::Document->new( $file );
 
 	return ( undef, " failed to parse file", 1 ) unless $Document;
-	
+
 	# Does the document contain a simple version number
 	my $elements = $Document->find( sub {
 		# Find a $VERSION symbol
@@ -202,7 +202,7 @@ sub get_version {
 
 	return ( undef, "no version", 0 ) unless $elements;
 
-	if ( @$elements > 1 ) 
+	if ( @$elements > 1 )
 		{
 		$class->error("$file contains more than one \$VERSION = 'something';");
 		}
@@ -211,9 +211,9 @@ sub get_version {
 	my $version = $element->snext_sibling->snext_sibling;
 	my $version_string = $version->string;
 
-	$class->error("Failed to get version string") 
+	$class->error("Failed to get version string")
 		unless defined $version_string;
-	
+
 	return ( $version_string, undef, undef );
 	}
 
@@ -223,16 +223,16 @@ sub get_version {
 
 sub change {
 	my $class = shift;
-	
+
 	my $from = shift @_;
-	
-	unless ( $from and $from =~ /^[\d\._]+$/ ) 
+
+	unless ( $from and $from =~ /^[\d\._]+$/ )
 		{
 		$class->error("From version is not a number [$from]");
 		}
 
 	my $to = shift @_;
-	unless ( $to and $to =~ /^[\d\._]+$/ ) 
+	unless ( $to and $to =~ /^[\d\._]+$/ )
 		{
 		$class->error("Target to version is not a number [$to]");
 		}
@@ -241,31 +241,31 @@ sub change {
 	my $files = $class->get_file_list;
 
 	my $count = 0;
-	foreach my $file ( @$files ) 
+	foreach my $file ( @$files )
 		{
-		if ( ! -w $file ) 
+		if ( ! -w $file )
 			{
 			$class->print_info( colored ['bold red'], " no write permission" );
 			next;
 			}
-			
+
 		my $rv = $class->changefile( $file, $from, $to );
 
-		if ( $rv ) 
+		if ( $rv )
 			{
-			$class->print_info( 
-				colored( ['cyan'], $from ), 
+			$class->print_info(
+				colored( ['cyan'], $from ),
 				" -> ",
-				colored( ['bold green'], $to ), 
+				colored( ['bold green'], $to ),
 				" $file"
 				);
 			$count++;
-			} 
-		elsif ( defined $rv ) 
+			}
+		elsif ( defined $rv )
 			{
 			$class->print_info( colored( ['red'], " skipped" ), " $file" );
-			} 
-		else 
+			}
+		else
 			{
 			$class->print_info( colored( ['red'], " failed to parse" ), " $file" );
 			}
@@ -289,23 +289,23 @@ sub changefile {
 		error( "Could not parse $file!" );
 		return '';
 		}
-		
+
 	my $rv = PPI::App::ppi_version::_change_document( $document, $from => $to );
 
 	error("$file contains more than one \$VERSION assignment") unless defined $rv;
-	
+
 	return '' unless $rv;
 
 	error("PPI::Document save failed") unless $document->save($file);
 
 	return 1;
 	}
-	
+
 =item error
 
 =cut
 
-sub error 
+sub error
 	{
 	no warnings 'uninitialized';
 	print "\n", colored ['red'], "  $_[1]\n\n";
@@ -331,7 +331,7 @@ brian d foy, C<< <bdfoy@cpan.org> >>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2008-2010, brian d foy, All Rights Reserved.
+Copyright (c) 2008-2013, brian d foy, All Rights Reserved.
 
 You may redistribute this under the same terms as Perl itself.
 
