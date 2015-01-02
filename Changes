@@ -2,3 +2,6 @@
 	* Initial release of my own version of ppi_version. Mostly
 	the same thing, but with output that pleases me.
 
+0.14 - Tue Dec 17 12:02:52 2013
+	* Handle `our $VERSION`
+
