@@ -1,4 +1,4 @@
-# Changes to PPI::App::ppi_version::BDFOY
+Revision history for Perl module PPI::App::ppi_version::BDFOY
 
 0.14 - Tue Dec 17 12:02:52 2013
 	* Handle `our $VERSION`
