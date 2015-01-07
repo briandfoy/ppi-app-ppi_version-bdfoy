@@ -1,42 +1,75 @@
-use ExtUtils::MakeMaker 6.48;
-
 require 5.008;
+use strict;
+use warnings;
 
-eval "use Test::Manifest 1.21";
+my $github    = 'https://github.com/briandfoy/';
+my $main_file = 'lib/';
 
-WriteMakefile(
+my %WriteMakefile = (
+	'MIN_PERL_VERSION' => 5.008,
 	'NAME'	        => 'PPI::App::ppi_version::BDFOY',
 	'ABSTRACT_FROM' => 'lib/PPI/App/ppi_version/BDFOY.pm',
 	'VERSION_FROM'  => 'lib/PPI/App/ppi_version/BDFOY.pm',
 	'LICENSE'       => 'perl',
 	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 
-	'PREREQ_PM'    => { 
+	'EXE_FILES'     => [ qw(script/ppi_version) ],
+
+	'CONFIGURE_REQUIRES' => {
+		'ExtUtils::MakeMaker' => '6.64',
+		},
+
+	'BUILD_REQUIRES' => {
+		},
+
+	'TEST_REQUIRES' => {
+		'Test::More' => '0.94',
+		},
+
+	'PREREQ_PM'     => {
 		'File::Find::Rule::Perl' => '0',
 		'File::Find::Rule'       => '0',
 		'PPI::App::ppi_version'  => '0',
 		'PPI::Document'          => '0',
 		'PPI'                    => '0',
 		'Term::ANSIColor'        => '0',		
-		'Test::More'             => '0',
 		'version'                => '0',
 		},
 
-	'MIN_PERL_VERSION' => 5.008,
-
 	'META_MERGE' => {
-        'meta-spec' => { version => 2 },
+		'meta-spec' => { version => 2 },
 		resources => {
 			repository => {
 				type => 'git',
-				url  => 'git@github.com:briandfoy/PPI-App-ppi_version-BDFOY.git',
-				web  => 'https://github.com/briandfoy/PPI-App-ppi_version-BDFOY',
+				url  => "$github.git",
+				web  => $github,
 				},
+			bugtraker => {
+				web    => "$github/issues",
+				},
+			homepage => $github,
 			},
 		},
 
-
-	'EXE_FILES'     => [ qw(script/ppi_version) ],
-
 	'clean'  => { FILES    => q|PPI-App-ppi_version-BDFOY-*| },
 	);
+
+sub arguments { \%WriteMakefile }
+
+do_it() unless caller;
+sub do_it {
+	require File::Spec;
+	my $MM ='ExtUtils::MakeMaker';
+	my $MM_version =
+		eval{ "$MM " . $WriteMakefile{'CONFIGURE_REQUIRES'}{'ExtUtils::MakeMaker'} }
+			//
+		"$MM 6.64";
+	eval "use $MM_version";
+	eval "use Test::Manifest 1.21" 
+		if -e File::Spec->catfile( qw(t test_manifest) );
+	WriteMakefile( %WriteMakefile );
+	}
+
+
+no warnings;
+__PACKAGE__;
