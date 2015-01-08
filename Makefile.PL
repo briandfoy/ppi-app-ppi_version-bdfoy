@@ -2,14 +2,18 @@ require 5.008;
 use strict;
 use warnings;
 
-my $github    = 'https://github.com/briandfoy/';
-my $main_file = 'lib/';
+use File::Spec::Functions qw(catfile);
+
+my $module    = 'PPI::App::ppi_version::BDFOY';
+my $github    = 'https://github.com/briandfoy/PPI-App-ppi_version-BDFOY';
+my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
 my %WriteMakefile = (
 	'MIN_PERL_VERSION' => 5.008,
-	'NAME'	        => 'PPI::App::ppi_version::BDFOY',
-	'ABSTRACT_FROM' => 'lib/PPI/App/ppi_version/BDFOY.pm',
-	'VERSION_FROM'  => 'lib/PPI/App/ppi_version/BDFOY.pm',
+
+	'NAME'	        => $module,
+	'ABSTRACT_FROM' => $main_file,
+	'VERSION_FROM'  => $main_file,
 	'LICENSE'       => 'perl',
 	'AUTHOR'        => 'brian d foy <bdfoy@cpan.org>',
 
