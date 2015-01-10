@@ -58,7 +58,7 @@ my %WriteMakefile = (
 			},
 		},
 
-	'clean'  => { FILES    => q|PPI-App-ppi_version-BDFOY-*| },
+	clean => { FILES => "$dist-*" },
 	);
 
 sub arguments { \%WriteMakefile }
