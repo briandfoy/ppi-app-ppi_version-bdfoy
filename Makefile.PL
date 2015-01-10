@@ -1,10 +1,12 @@
 require 5.008;
+
+package PPI::App::ppi_version::BDFOY;
 use strict;
 use warnings;
 
 use File::Spec::Functions qw(catfile);
 
-my $module    = 'PPI::App::ppi_version::BDFOY';
+my $module    = __PACKAGE__;
 ( my $dist = $module ) =~ s/::/-/g;
 
 my $github    = 'https://github.com/briandfoy/PPI-App-ppi_version-BDFOY';
