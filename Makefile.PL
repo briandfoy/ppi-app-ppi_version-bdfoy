@@ -5,6 +5,8 @@ use warnings;
 use File::Spec::Functions qw(catfile);
 
 my $module    = 'PPI::App::ppi_version::BDFOY';
+( my $dist = $module ) =~ s/::/-/g;
+
 my $github    = 'https://github.com/briandfoy/PPI-App-ppi_version-BDFOY';
 my $main_file = catfile( 'lib', split /::/, "$module.pm" );
 
