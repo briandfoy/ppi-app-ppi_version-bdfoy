@@ -2,6 +2,7 @@
 Changes
 corpus/our.pm
 corpus/vars.pm
+INSTALL.SKIP
 lib/PPI/App/ppi_version/BDFOY.pm
 LICENSE
 Makefile.PL
