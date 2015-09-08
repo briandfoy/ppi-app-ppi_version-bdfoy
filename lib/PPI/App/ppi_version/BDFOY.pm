@@ -1,7 +1,7 @@
 package PPI::App::ppi_version::BDFOY;
 use base qw(PPI::App::ppi_version);
 
-=pod
+=encoding utf8
 
 =head1 NAME
 
