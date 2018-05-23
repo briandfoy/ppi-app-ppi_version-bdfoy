@@ -22,15 +22,8 @@ name instead of the file location:
 
 	% perldoc PPI::App::ppi_version::BDFOY
 
-You can read the documentation and inspect the meta data on one of the 
-CPAN web interfaces, such as L<CPAN Search|http://search.cpan.org/dist/PPI-App-ppi_version-BDFOY> or 
-L<MetaCPAN|http://www.metacpan.org/module/PPI::App::ppi_version::BDFOY>:
-
-=over 4
-
-=item *	L<http://search.cpan.org/dist/PPI-App-ppi_version-BDFOY>
-
-=item *	L<http://www.metacpan.org/module/PPI::App::ppi_version::BDFOY>
+You can read the documentation and inspect the meta data on
+L<http://www.metacpan.org/module/PPI::App::ppi_version::BDFOY>.
 
 =back
 
