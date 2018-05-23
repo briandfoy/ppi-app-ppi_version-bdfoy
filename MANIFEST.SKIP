@@ -59,3 +59,4 @@
 
 \.releaserc
 \.travis\.yml
+\.appveyor\.yml
