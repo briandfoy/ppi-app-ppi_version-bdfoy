@@ -74,6 +74,7 @@ my %WriteMakefile = (
 		'PPI'                    => '0',
 		'Term::ANSIColor'        => '0',
 		'version'                => '0',
+		'parent'                 => '0',
 		},
 
 	'META_MERGE' => {

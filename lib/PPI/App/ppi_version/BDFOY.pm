@@ -1,5 +1,5 @@
 package PPI::App::ppi_version::BDFOY;
-use base qw(PPI::App::ppi_version);
+use parent qw(PPI::App::ppi_version);
 
 =encoding utf8
 
