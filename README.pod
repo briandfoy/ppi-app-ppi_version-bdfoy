@@ -35,8 +35,6 @@ name instead of the file location:
 You can read the documentation and inspect the meta data on
 L<http://www.metacpan.org/module/PPI::App::ppi_version::BDFOY>.
 
-=back
-
 The standard module documentation has example uses in the SYNOPSIS
 section, but you can also look in the I<examples/> directory (if it's
 there), or look at the test files in I<t/>.

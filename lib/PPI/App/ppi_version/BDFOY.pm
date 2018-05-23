@@ -27,8 +27,6 @@ Life would just be easier if Adam did things my way from the start.
 
 =cut
 
-=begin private
-
 =head2 Methods
 
 =over 4
@@ -311,7 +309,7 @@ sub error
 
 1;
 
-=end private
+=back
 
 =head1 SOURCE AVAILABILITY
 
