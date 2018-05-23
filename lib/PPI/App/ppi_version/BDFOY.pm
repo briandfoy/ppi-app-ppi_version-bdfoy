@@ -54,8 +54,7 @@ our $VERSION = '0.141';
 BEGIN {
 my %commands = map { $_, 1 } qw( show change );
 
-sub main
-	{
+sub main {
 	my( $class, @args ) = @_;
 
 	my $command = do {
@@ -74,8 +73,7 @@ sub main
 
 =cut
 
-sub print_my_version
-	{
+sub print_my_version {
 	print "brian's ppi_version $VERSION - Copright 2009 brian d foy\n";
 	}
 
@@ -83,23 +81,19 @@ sub print_my_version
 
 =cut
 
-sub print_file_report
-	{
+sub print_file_report {
 	my $class = shift;
 	my( $file, $version, $message, $error ) = @_;
 
-	if( defined $version )
-		{
+	if( defined $version ) {
 		$class->print_info(
 			colored( ['green'], $version ),
 			  " $file" );
 		}
-	elsif( $error )
-		{
+	elsif( $error ) {
 		$class->print_info( "$file... ", colored ['red'], $message );
 		}
-	else
-		{
+	else {
 		$class->print_info( "$file... ", $message );
 		}
 	}
@@ -108,8 +102,7 @@ sub print_file_report
 
 =cut
 
-sub print_info
-	{
+sub print_info {
 	my $class = shift;
 
 	print @_, "\n";
@@ -119,8 +112,7 @@ sub print_info
 
 =cut
 
-sub get_file_list
-	{
+sub get_file_list {
 	my( $class, $dir ) = @_;
 
 	my @files = grep { ! /\bblib\b/ } File::Find::Rule->perl_file
@@ -143,8 +135,7 @@ sub show {
 	my $files = $class->get_file_list( $args[0] );
 
 	my $count = 0;
-	foreach my $file ( @$files )
-		{
+	foreach my $file ( @$files ) {
 		my( $version, $message, $error_flag ) = $class->get_version( $file );
 		$class->print_file_report( $file, $version, $message, $error_flag );
 		$count++ if defined $version;
@@ -197,8 +188,7 @@ sub get_version {
 
 	return ( undef, "no version", 0 ) unless $elements;
 
-	if ( @$elements > 1 )
-		{
+	if ( @$elements > 1 ) {
 		$class->error("$file contains more than one \$VERSION = 'something';");
 		}
 
@@ -221,14 +211,12 @@ sub change {
 
 	my $from = shift @_;
 
-	unless ( $from and $from =~ /^[\d\._]+$/ )
-		{
+	unless ( $from and $from =~ /^[\d\._]+$/ ) {
 		$class->error("From version is not a number [$from]");
 		}
 
 	my $to = shift @_;
-	unless ( $to and $to =~ /^[\d\._]+$/ )
-		{
+	unless ( $to and $to =~ /^[\d\._]+$/ ) {
 		$class->error("Target to version is not a number [$to]");
 		}
 
@@ -236,18 +224,15 @@ sub change {
 	my $files = $class->get_file_list;
 
 	my $count = 0;
-	foreach my $file ( @$files )
-		{
-		if ( ! -w $file )
-			{
+	foreach my $file ( @$files ) {
+		if ( ! -w $file ) {
 			$class->print_info( colored ['bold red'], " no write permission" );
 			next;
 			}
 
 		my $rv = $class->changefile( $file, $from, $to );
 
-		if ( $rv )
-			{
+		if ( $rv ) {
 			$class->print_info(
 				colored( ['cyan'], $from ),
 				" -> ",
@@ -256,12 +241,10 @@ sub change {
 				);
 			$count++;
 			}
-		elsif ( defined $rv )
-			{
+		elsif ( defined $rv ) {
 			$class->print_info( colored( ['red'], " skipped" ), " $file" );
 			}
-		else
-			{
+		else {
 			$class->print_info( colored( ['red'], " failed to parse" ), " $file" );
 			}
 		}
@@ -279,8 +262,7 @@ sub changefile {
 	my( $self, $file, $from, $to ) = @_;
 
 	my $document = eval { PPI::Document->new($file) };
-	unless( $document )
-		{
+	unless( $document ) {
 		error( "Could not parse $file!" );
 		return '';
 		}
@@ -300,8 +282,7 @@ sub changefile {
 
 =cut
 
-sub error
-	{
+sub error {
 	no warnings 'uninitialized';
 	print "\n", colored ['red'], "  $_[1]\n\n";
 	return 255;
