@@ -44,10 +44,7 @@ use File::Find::Rule       ();
 use File::Find::Rule::Perl ();
 use Term::ANSIColor;
 
-use vars qw{$VERSION};
-BEGIN {
-	$VERSION = '0.14';
-	}
+our $VERSION = '0.141';
 
 #####################################################################
 # Main Methods
