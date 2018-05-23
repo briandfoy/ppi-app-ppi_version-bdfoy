@@ -296,7 +296,7 @@ sub error {
 
 This source is part of a Github project:
 
-	git@github.com:briandfoy/ppi-app-ppi_version-bdfoy.git
+	https://github.com/briandfoy/ppi-app-ppi_version-bdfoy
 
 =head1 AUTHOR
 
