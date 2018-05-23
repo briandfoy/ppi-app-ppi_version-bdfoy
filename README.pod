@@ -71,16 +71,16 @@ the source repository:
 
 =over 4
 
-=item *	L<https://github.com/briandfoy/PPI-App-ppi_version-BDFOY>
+=item *	L<https://github.com/briandfoy/ppi-app-ppi_version-bdfoy>
 
 =back
 
-If you find a problem, file a ticket in the L<issue 
-tracker|https://github.com/briandfoy/PPI-App-ppi_version-BDFOY/issues>:
+If you find a problem, file a ticket in the L<issue
+tracker|https://github.com/briandfoy/ppi-app-ppi_version-bdfoy/issues>:
 
 =over 4
 
-=item *	L<https://github.com/briandfoy/PPI-App-ppi_version-BDFOY/issues>
+=item *	L<https://github.com/briandfoy/ppi-app-ppi_version-bdfoy/issues>
 
 =back
 

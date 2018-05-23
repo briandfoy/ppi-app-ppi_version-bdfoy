@@ -317,7 +317,7 @@ sub error
 
 This source is part of a Github project:
 
-	git@github.com:briandfoy/PPI-App-ppi_version-BDFOY.git
+	git@github.com:briandfoy/ppi-app-ppi_version-bdfoy.git
 
 =head1 AUTHOR
 
