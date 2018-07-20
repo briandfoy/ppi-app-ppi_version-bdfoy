@@ -10,7 +10,7 @@
 
 =for HTML <a href="https://github.com/briandfoy/ppi-app-ppi_version-bdfoy/blob/master/LICENSE"><img src="https://img.shields.io/cpan/l/PPI-App-ppi_version-BDFOY.svg" /></a>
 
-=for HTML <a href="http://www.metacpan.org/module/PPI::App::ppi_version::BDFOY"><img src="https://img.shields.io/cpan/v/PPI-App-ppi_version-BDFOY.svg" /></A>
+=for HTML <a href="https://metacpan.org/pod/PPI::App::ppi_version::BDFOY"><img src="https://img.shields.io/cpan/v/PPI-App-ppi_version-BDFOY.svg" /></A>
 
 =head1 The PPI::App::ppi_version::BDFOY module
 
@@ -23,7 +23,7 @@ for any Perl module.
 
 To read about L<PPI::App::ppi_version::BDFOY>, look at the embedded documentation
 in the module itself. Inside the distribution, you can format it
-with L<perldoc|http://perldoc.perl.org/perldoc.html>:
+with L<perldoc|https://perldoc.perl.orgperldoc.html>:
 
 	% perldoc lib/PPI/App/ppi_version/BDFOY.pm
 
@@ -33,7 +33,7 @@ name instead of the file location:
 	% perldoc PPI::App::ppi_version::BDFOY
 
 You can read the documentation and inspect the meta data on
-L<http://www.metacpan.org/module/PPI::App::ppi_version::BDFOY>.
+L<https://metacpan.org/pod/PPI::App::ppi_version::BDFOY>.
 
 The standard module documentation has example uses in the SYNOPSIS
 section, but you can also look in the I<examples/> directory (if it's
