@@ -64,7 +64,6 @@ sub main {
 		else                               { 'change' }
 		};
 
-
 	$class->$command( @args );
 	}
 }
@@ -211,13 +210,13 @@ sub change {
 
 	my $from = shift @_;
 
-	unless ( $from and $from =~ /^[\d\._]+$/ ) {
-		$class->error("From version is not a number [$from]");
+	unless ( $from and $from =~ /^v?[\d\._]+$/ ) {
+		$class->error("From is not a version [$from]");
 		}
 
 	my $to = shift @_;
-	unless ( $to and $to =~ /^[\d\._]+$/ ) {
-		$class->error("Target to version is not a number [$to]");
+	unless ( $to and $to =~ /^v?[\d\._]+$/ ) {
+		$class->error("Target is not a version [$to]");
 		}
 
 	# Find all modules and scripts below the current directory
