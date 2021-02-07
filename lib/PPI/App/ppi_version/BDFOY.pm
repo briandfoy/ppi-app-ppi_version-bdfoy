@@ -74,7 +74,7 @@ sub main {
 =cut
 
 sub print_my_version {
-	print "brian's ppi_version $VERSION - Copright 2009 brian d foy\n";
+	print "brian's ppi_version $VERSION - Copright 2009-2021 brian d foy\n";
 	}
 
 =item print_file_report
