@@ -33,7 +33,7 @@ Life would just be easier if Adam did things my way from the start.
 
 =cut
 
-use 5.008;
+use 5.010;
 use strict;
 use version;
 use File::Spec             ();
@@ -42,7 +42,7 @@ use File::Find::Rule       ();
 use File::Find::Rule::Perl ();
 use Term::ANSIColor;
 
-our $VERSION = '1.001';
+our $VERSION = '1.002';
 
 #####################################################################
 # Main Methods
@@ -85,9 +85,9 @@ sub print_file_report {
 	my( $file, $version, $message, $error ) = @_;
 
 	if( defined $version ) {
-		$class->print_info(
-			colored( ['green'], $version ),
-			  " $file" );
+		$version = $version =~ m/\A</ ?
+			$version : colored( ['green'], sprintf '%12s', $version );
+		$class->print_info( "$version $file" );
 		}
 	elsif( $error ) {
 		$class->print_info( "$file... ", colored ['red'], $message );
@@ -135,7 +135,12 @@ sub show {
 
 	my $count = 0;
 	foreach my $file ( @$files ) {
-		my( $version, $message, $error_flag ) = $class->get_version( $file );
+		my( $version, $message, $error_flag ) = eval { $class->get_version( $file ) };
+		if( $@ ) {
+			$error_flag = 1;
+			$message //= $@;
+			}
+		$version //= '<no version>';
 		$class->print_file_report( $file, $version, $message, $error_flag );
 		$count++ if defined $version;
 		}
