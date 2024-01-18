@@ -311,7 +311,7 @@ brian d foy, C<< <briandfoy@pobox.com> >>
 
 =head1 COPYRIGHT
 
-Copyright © 2008-2021, brian d foy briandfoy@pobox.com>. All rights reserved.
+Copyright © 2008-2024, brian d foy briandfoy@pobox.com>. All rights reserved.
 
 You may redistribute this under the same terms as the Artistic License 2.0.
 
