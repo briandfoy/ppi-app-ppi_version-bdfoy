@@ -15,7 +15,7 @@ PPI::App::ppi_version::BDFOY - brian d foy's rip off of Adam's ppi_version
 	% ppi_version change 1.23 1.24
 
 	# call it with less typing. With no arguments, it assumes 'show'.
-	% ppi_version show
+	% ppi_version
 
 	# with arguments that are not 'show' or 'change', assume 'change'
 	% ppi_version 1.23 1.24
