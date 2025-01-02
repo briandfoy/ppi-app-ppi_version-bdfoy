@@ -10,6 +10,7 @@ MANIFEST			This list of files
 MANIFEST.SKIP
 README.pod
 script/ppi_version
+SECURITY.md
 t/get_version.t
 t/load.t
 t/pod.t
